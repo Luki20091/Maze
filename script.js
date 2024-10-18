@@ -1,6 +1,6 @@
 const canvas = document.getElementById('mazeCanvas');
 const ctx = canvas.getContext('2d');
-const cellSize = 100;
+const cellSize = 50;
 const rows = canvas.height / cellSize;
 const cols = canvas.width / cellSize;
 let maze = [];
@@ -73,7 +73,7 @@ function drawMaze() {
         }
     }
 
-    if (co <= 1) {
+    if (co <= 0) {
         maze[rows - fm2][cols - fm1] = 4;
     }
 
