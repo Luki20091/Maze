@@ -32,12 +32,12 @@ function generateMaze() {
     maze[1][1] = 0;
     maze[0][1] = 0;
     maze[1][0] = 0;
-    maze[0][0] = 0; // Start point1
+    maze[0][0] = 3; // Start point1
     
     maze[rows-2][cols-2] = 0;
     maze[rows-1][cols-2] = 0;
     maze[rows-2][cols-1] = 0;
-    maze[rows-1][cols-1] = 0; // Start point2
+    maze[rows-1][cols-1] = 5; // Start point2
 
 
     player1 = { x: 0, y: 0 };
