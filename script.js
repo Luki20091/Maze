@@ -1,6 +1,6 @@
 const canvas = document.getElementById('mazeCanvas');
 const ctx = canvas.getContext('2d');
-const cellSize = 10;
+const cellSize = 25;
 const rows = canvas.height / cellSize;
 const cols = canvas.width / cellSize;
 let maze = [];
