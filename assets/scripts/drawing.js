@@ -4,6 +4,11 @@ function drawCell(x, y) {
             ctx.drawImage(bombImage, x * cellSize, y * cellSize, cellSize, cellSize);
         }
     }
+    if (maze[y][x] === 1) {
+        if (bombImage) {
+            ctx.drawImage(boxImage, x * cellSize, y * cellSize, cellSize, cellSize);
+        }
+    }
 }
 
 function drawMaze() {
@@ -16,8 +21,7 @@ function drawMaze() {
             }
 
             if (maze[y][x] === 1) {
-                ctx.fillStyle = '#000';
-                ctx.fillRect(x * cellSize, y * cellSize, cellSize, cellSize);
+                drawCell(x, y); // Only draw cells with value 1
             } else if (maze[y][x] === 2) {
                 drawCell(x, y); // Only draw cells with value 2
             } else if (maze[y][x] === 3) {
