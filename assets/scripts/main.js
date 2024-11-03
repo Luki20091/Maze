@@ -19,8 +19,6 @@ let co = 0;
 let bombImage; // Declare bombImage to cache the SVG
 let boxImage; // Declare boxImage to cache the SVG
 
-document.addEventListener('keydown', moveplayer1);
-document.addEventListener('keydown', moveplayer2);
 updateScore();
 
 function generateMaze() {
@@ -111,10 +109,11 @@ function win() {
         alert("Remis");
     }
     generateMaze();
+    menu();
 }
 
 function loadBombImage(callback) {
-    fetch("./assets/images/test.svg")
+    fetch("./assets/images/bomb.svg")
         .then(response => response.text())
         .then(data => {
             const svgBlob = new Blob([data], { type: 'image/svg+xml;charset=utf-8' });
