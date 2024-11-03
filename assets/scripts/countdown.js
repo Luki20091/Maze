@@ -27,12 +27,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 1000);
     }
 
-    function menu() {
-        const overlay = document.getElementById('overlay');
-        const startButton = document.getElementById('startButton');
-        overlay.style.visibility = 'visible';
-        startButton.style.display = 'flex';
-    }
 
 
 

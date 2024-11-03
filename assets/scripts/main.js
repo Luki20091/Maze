@@ -21,6 +21,15 @@ let boxImage; // Declare boxImage to cache the SVG
 
 updateScore();
 
+function menu() {
+    const overlay = document.getElementById('overlay');
+    const startButton = document.getElementById('startButton');
+    overlay.style.visibility = 'visible';
+    startButton.style.display = 'flex';
+}
+
+
+
 function generateMaze() {
     p1score = 0;
     p2score = 0;
