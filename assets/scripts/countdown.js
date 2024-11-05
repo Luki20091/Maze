@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const overlay = document.getElementById('overlay');
     const countdownElement = document.getElementById('countdown');
     const startButton = document.getElementById('startButton');
-    let isGameActive = false;
+    isGameActive = false; // Initial state of the game
     menu();
 
     startButton.addEventListener('click', startCountdown);
@@ -22,14 +22,10 @@ document.addEventListener('DOMContentLoaded', () => {
             if (count < 0) {
                 clearInterval(interval);
                 overlay.style.visibility = 'hidden';
-                isGameActive = true;
+                isGameActive = true; // Game becomes active
             }
         }, 1000);
     }
-
-
-
-
 
     document.addEventListener('keydown', (event) => {
         if (isGameActive) {

@@ -28,8 +28,6 @@ function menu() {
     startButton.style.display = 'flex';
 }
 
-
-
 function generateMaze() {
     p1score = 0;
     p2score = 0;
@@ -108,6 +106,7 @@ function saveScore2(p) {
 }
 
 function win() {
+    isGameActive = false; // Make sure the game is not active after winning
     if (p1score > p2score) {
         alert("Wygrał gracz 1");
         saveScore2(1);
@@ -128,7 +127,7 @@ function loadBombImage(callback) {
             const svgBlob = new Blob([data], { type: 'image/svg+xml;charset=utf-8' });
             const url = URL.createObjectURL(svgBlob);
             bombImage = new Image();
-            bombImage.onload = function() {
+            bombImage.onload = function () {
                 callback();
                 URL.revokeObjectURL(url); // Free memory
             };
@@ -137,7 +136,6 @@ function loadBombImage(callback) {
         .catch(error => console.error(error));
 }
 
-
 function loadBoxImage(callback) {
     fetch("./assets/images/box.svg")
         .then(response => response.text())
@@ -145,7 +143,7 @@ function loadBoxImage(callback) {
             const svgBlob = new Blob([data], { type: 'image/svg+xml;charset=utf-8' });
             const url = URL.createObjectURL(svgBlob);
             boxImage = new Image();
-            boxImage.onload = function() {
+            boxImage.onload = function () {
                 callback();
                 URL.revokeObjectURL(url); // Free memory
             };
