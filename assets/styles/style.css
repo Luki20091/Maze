@@ -61,7 +61,10 @@ body {
 .countdown {
     font-size: 50px;
     background-color: transparent;
+    display: flex;
+    flex-direction: column;
 }
+
 
 
 #mazeCanvas {
@@ -118,4 +121,14 @@ button {
 
 #player2 svg {
     color:#f66;
+}
+
+#countdown {
+    color: #1d1;
+}
+#countdown.p1{
+    color: #66f!important;
+}
+#countdown.p2{
+    color: #f66!important;
 }

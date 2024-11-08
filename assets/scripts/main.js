@@ -33,9 +33,9 @@ function generateMaze() {
     p2score = 0;
     maze = Array.from({ length: rows }, () => Array(cols).fill(0));
 
-    for (let y = 0; y < rows; y++) {
-        for (let x = 0; x < cols; x++) {
-            maze[y][x] = Math.random() > 0.94 ? 1 : (Math.random() > 0.98 ? 2 : 0); // 1 walls, 2 points
+    for (let y = 1; y < rows-1; y++) {
+        for (let x = 1; x < cols-1; x++) {
+            maze[y][x] = Math.random() > 0.95 ? 1 : (Math.random() > 0.98 ? 2 : 0); // 1 walls, 2 points
 
             // Ensure a cell with maze[y][x] === 0 is never fully surrounded by cells with maze[y][x] === 1
             if (maze[y][x] === 0) {
@@ -94,14 +94,26 @@ function updateScore2() {
 }
 
 function saveScore(p) {
-    if (p === 1) p1score++;
-    if (p === 2) p2score++;
+    if (p === 1) {
+        p1score++;
+        localStorage.setItem("p1time", 20);
+    }
+    if (p === 2) { 
+        p2score++;
+        localStorage.setItem("p2time", 20);
+    }
     updateScore();
 }
 
 function saveScore2(p) {
-    if (p === 1) p1score2++;
-    if (p === 2) p2score2++;
+    if (p === 1) {
+        p1score2++;
+    }
+    if (p === 2) { 
+        p2score2++;
+    }
+    localStorage.setItem("p1time", 20);
+    localStorage.setItem("p2time", 20);
     updateScore2();
 }
 
@@ -154,3 +166,12 @@ function loadBoxImage(callback) {
 
 loadBombImage(generateMaze); // Load bomb image and then generate the maze
 loadBoxImage(generateMaze); // Load box image and then generate the maze
+
+
+
+
+
+
+
+
+

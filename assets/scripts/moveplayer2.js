@@ -1,37 +1,38 @@
 function moveplayer2(e) {
-    const { x, y } = player2;
-    if (e.key === 'i' && y > 0 && ((maze[y - 1][x] !== 1) && (maze[y - 1][x] !== 3))) {
-        maze[y][x] = 5;
-        player2.y--;
-        drawCell(x, y);
-        drawMaze(); 
+    let { x, y } = player2;
+    let xx, yy;
+
+    if (e.key === 'i') {
+        yy = (y - 1 + rows) % rows; // Move up and wrap around
+        xx = x;
+    } else if (e.key === 'k') {
+        yy = (y + 1) % rows; // Move down and wrap around
+        xx = x;
+    } else if (e.key === 'j') {
+        yy = y;
+        xx = (x - 1 + cols) % cols; // Move left and wrap around
+    } else if (e.key === 'l') {
+        yy = y;
+        xx = (x + 1) % cols; // Move right and wrap around
+    } else {
+        return; // Exit if the key press is not a valid move key
     }
-    if (e.key === 'k' && y < rows - 1 && ((maze[y + 1][x] !== 1) && (maze[y + 1][x] !== 3))) {
-        maze[y][x] = 5;
-        player2.y++;
+
+    if (maze[yy][xx] !== 1 && maze[yy][xx] !== 3) {
+        maze[y][x] = 5; // Set the current position to indicate the player has moved
+        player2 = { x: xx, y: yy }; // Update the player's position
         drawCell(x, y); // Redraw the old position
-        drawMaze();
+        drawCell(xx, yy); // Draw the new position
+
+        if (maze[yy][xx] === 2) {
+            maze[yy][xx] = 5;
+            saveScore(2);
+            aroundPlayer2();
+        } else if (maze[yy][xx] === 0) {
+            maze[yy][xx] = 5;
+            saveScore(2);
+        }
     }
-    if (e.key === 'j' && x > 0 && ((maze[y][x - 1] !== 1) && (maze[y][x - 1] !== 3))) {
-        maze[y][x] = 5;
-        player2.x--;
-        drawCell(x, y); // Redraw the old position
-        drawMaze();
-    }
-    if (e.key === 'l' && x < cols - 1 && ((maze[y][x + 1] !== 1) && (maze[y][x + 1] !== 3))) {
-        maze[y][x] = 5;
-        player2.x++;
-        drawCell(x, y); // Redraw the old position
-        drawMaze();
-    }
-    drawCell(player2.x, player2.y); // Redraw the new position
-    if (maze[player2.y][player2.x] === 2) {
-        maze[player2.y][player2.x] = 5;
-        saveScore(2);
-        aroundPlayer2();
-    }
-    if (maze[player2.y][player2.x] === 0) {
-        maze[player2.y][player2.x] = 5;
-        saveScore(2);
-    }
+
+    drawMaze(); // Redraw the entire maze to reflect the changes
 }
