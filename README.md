@@ -1,5 +1,6 @@
 # To fix in v4.5
 - bug: draw in the game after win by countdown
+- bug: countdown in menu
 
 # v4.4
 - added players movement through walls
