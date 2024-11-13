@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap');
+
+html {
+    background-color: #18181a;
+    font-family: 'Comfortaa';
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 0px 2px 10px rgba(0, 0, 20, 0.4);
+    cursor: context-menu;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+.button, #countdown {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: fixed;
+    display: block;
+    font-size: 30px;
+    background-color: #0c0;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    z-index: 20;
+}
+
+
+
+.button:hover{
+    background-color: #1d1;
+    cursor: pointer;
+}
+
+
+
+#countdown {
+    font-size: 50px;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+#mazeCanvas {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 20, 0.4);
+}
+
+button {
+    margin-bottom: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+}
+
+#score {
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+.players {
+    display: flex;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    justify-content: space-between;
+    z-index: 30;
+}
+
+
+#player2 {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: flex-end;
+}
+
+
+#player1 {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+}
+
+.players > div {
+    padding: 20px;
+}
+
+
+
+#player1 svg {
+    color:#66f;
+}
+
+#player2 svg {
+    color:#f66;
+}
+
+#countdown {
+    color: #1d1;
+}
+#countdown.p1{
+    color: #66f!important;
+}
+#countdown.p2{
+    color: #f66!important;
+}

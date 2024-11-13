@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maze Game 4.4</title>
+    <link rel="stylesheet" href="assets/styles/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/js/all.min.js" crossorigin="anonymous"></script>
+    
+</head>
+<body>
+    <div class="players">
+        <div id="player1">
+            <h2><i class="fa-solid fa-user-large fa-lg"></i> Gracz 1 [W,S,A,D]</h2>
+            <h3><i class="fa-solid fa-layer-group fa-lg"></i> <span id="p1-score">0</span></h3>
+            <h3><i class="fa-solid fa-star fa-lg"></i> <span id="p1-score2">0</span></h3>
+        </div>
+        <div id="player2">
+            <h2>[I,K,J,L] Gracz 2 <i class="fa-solid fa-user-large fa-lg"></i></h2>
+            <h3><span id="p2-score">0</span> <i class="fa-solid fa-layer-group fa-lg"></i></h3>
+            <h3><span id="p2-score2">0</span> <i class="fa-solid fa-star fa-lg"></i></h3>
+        </div>
+    </div>
+    <canvas id="mazeCanvas" width="500" height="500"></canvas>
+
+    <div id="overlay" class="overlay">
+        <div id="countdown"></div>
+    </div>
+    <button class="button" id="startButton" tabindex="1">Start</button>
+
+    <script src="assets/scripts/menu.js"></script>
+    <script src="assets/scripts/countdown.js"></script>
+    <script src="assets/scripts/moveplayer1.js"></script>
+    <script src="assets/scripts/moveplayer2.js"></script>
+    <script src="assets/scripts/aroundPlayer.js"></script>
+    <script src="assets/scripts/drawing.js"></script>
+    <script src="assets/scripts/main.js"></script>
+</body>
+</html>
