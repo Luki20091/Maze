@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const startButton = document.getElementById('startButton');
     const countdownTimer = document.getElementById('countdown-timer');
     isGameActive = false; // Initial state of the game
+    isCounting = false; // Initial state of the game
     let p1InactiveInterval, p2InactiveInterval; // Intervals for player inactivity
     menu();
 
@@ -13,6 +14,8 @@ document.addEventListener('DOMContentLoaded', () => {
         let count = 3;
 
         // Hide start button and show overlay
+        countdownElement.classList.remove('p2');
+        countdownElement.classList.remove('p1');
         startButton.style.display = 'none';
         countdownElement.innerText = count;
         overlay.style.visibility = 'visible';
@@ -35,59 +38,74 @@ document.addEventListener('DOMContentLoaded', () => {
         if (isGameActive) {
             moveplayer1(event);
             moveplayer2(event);
-
             // Update inactivity times in localStorage in saveScore and saveScore2
         }
     });
 
+
+
+
     function startInactiveTimers() {
-        p1InactiveInterval = setInterval(() => checkPlayerInactivity(1), 1000);
-        p2InactiveInterval = setInterval(() => checkPlayerInactivity(2), 1000);
+        if (isGameActive) {
+            p1InactiveInterval = setInterval(() => checkPlayerInactivity(1), 1000);
+            p2InactiveInterval = setInterval(() => checkPlayerInactivity(2), 1000);
+            isCounting = false;
+        }
     }
 
     function checkPlayerInactivity(player) {
-        let time = parseInt(localStorage.getItem(`p${player}time`));
-        if (isNaN(time) || time <= 0) {
-            showInactivityCountdown(player);
-        } else {
-            localStorage.setItem(`p${player}time`, time - 1);
+        if (isGameActive && !isCounting) {
+            let time = parseInt(localStorage.getItem(`p${player}time`));
+            if (isNaN(time) || time <= 0) {
+                showInactivityCountdown(player);
+            } else {
+                localStorage.setItem(`p${player}time`, time - 1);
+            }
         }
     }
 
     function showInactivityCountdown(player) {
-        clearInterval(player === 1 ? p1InactiveInterval : p2InactiveInterval);
+        if (isGameActive) {
+            clearInterval(player === 1 ? p1InactiveInterval : p2InactiveInterval);
+            isCounting = true;
 
-        let count = 5;
-        overlay.style.visibility = 'visible';
-        countdownElement.classList.add(player === 1 ? 'p1' : 'p2');
-        countdownElement.classList.remove(player === 1 ? 'p2' : 'p1');
-        countdownElement.innerText = count;
-        count--;
-
-        const interval = setInterval(() => {
+            let count = 5;
+            overlay.style.visibility = 'visible';
+            countdownElement.classList.add(player === 1 ? 'p1' : 'p2');
+            countdownElement.classList.remove(player === 1 ? 'p2' : 'p1');
             countdownElement.innerText = count;
             count--;
 
-            let playerTime = parseInt(localStorage.getItem(`p${player}time`));
-            if (playerTime > 0) {
-                clearInterval(interval);
-                overlay.style.visibility = 'hidden';
-                startInactiveTimers(); // Restart the timers
-                return;
-            }
+            const interval = setInterval(() => {
+                countdownElement.innerText = count;
+                count--;
 
-            if (count < 0) {
-                clearInterval(interval);
-                win(); // End the game if the countdown reaches zero
-            }
-        }, 1000);
+                let playerTime = parseInt(localStorage.getItem(`p${player}time`));
+                if (playerTime > 0) {
+                    clearInterval(interval);
+                    overlay.style.visibility = 'hidden';
+                    startInactiveTimers(); // Restart the timers
+                    return;
+                }
+
+                if (count < 0) {
+                    clearInterval(interval);
+                    if (isGameActive) {
+                        isCounting = false;
+                        win(player); // End the game if the countdown reaches zero
+                    }
+                }
+            }, 1000);
+        }
     }
 
     function menu() {
-        overlay.style.visibility = 'visible';
-        startButton.style.display = 'flex';
-        startButton.focus();
         countdownElement.classList.remove('p2');
         countdownElement.classList.remove('p1');
+        clearInterval(p1InactiveInterval);
+        clearInterval(p2InactiveInterval);
+        overlay.style.visibility = 'visible';
+        startButton.style.display = 'block';
+        startButton.focus();
     }
 });

@@ -96,11 +96,11 @@ function updateScore2() {
 function saveScore(p) {
     if (p === 1) {
         p1score++;
-        localStorage.setItem("p1time", 20);
+        localStorage.setItem("p1time", 10);
     }
     if (p === 2) { 
         p2score++;
-        localStorage.setItem("p2time", 20);
+        localStorage.setItem("p2time", 10);
     }
     updateScore();
 }
@@ -112,14 +112,18 @@ function saveScore2(p) {
     if (p === 2) { 
         p2score2++;
     }
-    localStorage.setItem("p1time", 20);
-    localStorage.setItem("p2time", 20);
     updateScore2();
 }
 
-function win() {
+function win(p) {
     isGameActive = false; // Make sure the game is not active after winning
-    if (p1score > p2score) {
+    if (p==2) {
+        alert("Wygrał gracz 1");
+        saveScore2(1);
+    } else if (p==1) {
+        alert("Wygrał gracz 2");
+        saveScore2(2);
+    } else if (p1score > p2score) {
         alert("Wygrał gracz 1");
         saveScore2(1);
     } else if (p1score < p2score) {
