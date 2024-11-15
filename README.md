@@ -1,5 +1,11 @@
 # v5.0
-- [ ] Multiplayer
+- [ ] Add multiplayer
+- [ ] Add menu containing (single/multiplayer)
+
+# v4.6
+- [ ] Add better broadcasts than alerts
+- [ ] Add menu containing (easy/medium/hard)
+- [ ] Add AI player matched to difficulty levels
 
 # v4.5
 - [x] Prevent movement after win by countdown
@@ -7,8 +13,8 @@
 - [x] Prevent multi-clocking countdown 
 
 # v4.4
-- [x] Added players movement through walls
-- [x] Added countdown when players AFK
+- [x] Add players movement through walls
+- [x] Add countdown when players AFK
 
 # v4.3
 - [x] Prevent movement after wins
