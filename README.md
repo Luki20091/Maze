@@ -2,10 +2,13 @@
 - [ ] Add multiplayer
 - [ ] Add menu containing (single/multiplayer)
 
-# v4.6
-- [ ] Add better broadcasts than alerts
+# v4.7
+- [ ] Change broadcasts to better than alerts
 - [ ] Add menu containing (easy/medium/hard)
 - [ ] Add AI player matched to difficulty levels
+      
+# v4.6
+- [ ] Change countdown local storage times
 
 # v4.5
 - [x] Prevent movement after win by countdown
